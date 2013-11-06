@@ -7,7 +7,7 @@ Based on [In Clauses](http://skife.org/jdbi/java/2011/12/21/jdbi_in_clauses.html
 ```bash
 git clone https://github.com/milespomeroy/padawan
 cd padawan
-mvn -Djetty.port=9999 jetty:run
+mvn jetty:run
 ```
 
 Then you should see "10" if you go to <http://localhost:9999>.

@@ -43,6 +43,12 @@
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-maven-plugin</artifactId>
 				<version>${jetty.version}</version>
+				<configuration>
+					<reload>manual</reload>
+					<httpConnector>
+						<port>9999</port>
+					</httpConnector>
+				</configuration>
 			</plugin>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>

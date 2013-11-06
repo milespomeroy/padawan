@@ -2,11 +2,15 @@ package com.milespomeroy.padawan;
 
 import java.io.IOException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 
 import org.skife.jdbi.v2.DBI;
 import org.skife.jdbi.v2.Handle;
@@ -17,8 +21,17 @@ public class HelloServlet extends HttpServlet {
 
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-		this.dbi = new DBI("jdbc:postgresql://127.0.0.1:5432/postgres",
-				"postgres", "postgres");
+		try
+		{
+			Context context = new InitialContext();
+			DataSource dataSource = (DataSource)context.lookup("java:comp/env/jdbc/pg");
+			this.dbi = new DBI(dataSource);
+		}
+		catch(NamingException | ClassCastException e)
+		{
+			throw new ServletException("Failure getting JNDI reference for Postgres.", e);
+		}
+
 		this.dbi.registerArgumentFactory(new PostgresIntegerArrayArgumentFactory());
 
 		try (Handle handle = this.dbi.open()) {

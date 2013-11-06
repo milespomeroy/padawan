@@ -1,0 +1,11 @@
+.project
+.classpath
+.settings/
+.loadpath
+target/
+bin/**
+.DS_Store*
+ehthumbs.db
+Icon?
+Thumbs.db
+

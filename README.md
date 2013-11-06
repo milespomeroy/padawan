@@ -13,4 +13,3 @@ mvn jetty:run
 Then you should see "10" if you go to <http://localhost:9999>.
 
 I didn't really do anything different than the example that Brian gave, except for registering on the DBI instead of the Handle.
-

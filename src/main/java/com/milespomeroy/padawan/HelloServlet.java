@@ -45,6 +45,16 @@ public class HelloServlet extends HttpServlet {
 
 		response.setContentType("text/html");
 		response.setStatus(HttpServletResponse.SC_OK);
-		response.getWriter().println("<h1>" + sum + "</h1>");
+		response.getWriter().println("<h1 style=\"\n" + 
+				"    position: absolute;\n" + 
+				"    left: 50%;\n" + 
+				"    top: 50%;\n" + 
+				"    height: 50px;\n" + 
+				"    width: 50px;\n" + 
+				"    text-align: center;\n" + 
+				"    margin: -25px 0 0 -25px;\n" + 
+				"    font: normal 40px monospace;\n" + 
+				"    line-height: 50px;\n" + 
+				"\">" + sum + "</h1>");
 	}
 }
